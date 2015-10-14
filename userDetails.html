@@ -1,0 +1,33 @@
+<div>
+    <div>User Name : {{user.name}}</div>
+    <br/>
+
+    <div ng-show="error">Error : {{error}}</div>
+    <br/>
+    <image ng-src="{{user.avatar_url}}"></image>
+    <br/>
+
+    <h3 ng-show="repos" id="repositories">Repositories</h3>
+    Order By :
+    <select ng-model="repoSortOrder">
+        <option value="-stargazers_count">Star</option>
+        <option value="name">Name</option>
+        <option value="language">Language</option>
+    </select>
+    <table ng-show="repos">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Star Count</th>
+            <th>Language</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
+            <td>{{repo.name}}</td>
+            <td>{{repo.stargazers_count}}</td>
+            <td>{{repo.language}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
